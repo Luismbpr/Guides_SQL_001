@@ -1,0 +1,26 @@
+version: latest
+
+services:
+  postgres_0361_01:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=secret234
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+
+  pg_admin_0361_01:
+    image: dpage/pgadmin4:latest
+    restart: always
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@email.com
+      - PGADMIN_DEFAULT_PASSWORD=54321
+      - PGADMIN_LISTEN_PORT=5050
+    ports:
+      - "5050:5050"
+
+volumes:
+  data:
